@@ -55,10 +55,8 @@ class PostController extends Controller
             return redirect('/posts');   
     }
 
-   public function destroy( $post){
-        $deletepost=Post::find($post);
-        $deletepost->delete();
-        session()->flash('message','Deleted successfully');
+    public function destroy(Post $post){
+        $post->delete();
         return redirect('/posts');   
 
     }

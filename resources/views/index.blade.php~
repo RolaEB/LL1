@@ -44,10 +44,10 @@
       <td>
       <a href="/posts/{{$post->id}}" class="btn btn-info">View </a>
       <a href="/posts/{post}/edit" class="btn btn-primary">Edit </a>
-      <form action="posts/{{$post->id}}" method="post">
+      <form action="posts/{post}" method="post">
       
-      {{csrf_field()}}
-      {{method_field('DELETE')}}
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="_method" value="DESTROY" />
        <input type="submit" value="delete " class="btn btn-danger">
        </form>
       

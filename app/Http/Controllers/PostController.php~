@@ -5,6 +5,8 @@ use DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Http\Requests\StorePostRequest;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class PostController extends Controller
 {
@@ -21,7 +23,7 @@ class PostController extends Controller
             'users' => $users
         ]);
         }
-    public function store(Request $request){
+    public function store(StorePostRequest $request){
                 // dd($request->all());
                 Post::create([
                     'title' => $request->title,
@@ -45,18 +47,22 @@ class PostController extends Controller
         ]);
     }
 
-    public function update (Post $post){
-       
-       $post->fill([
-           'title'=>$post->title,
-           'description'=>$post->description,
-           'user_id'=>$post->user_id
-       ]);
-            return redirect('/posts');   
+    public function update (StorePostRequest $request,Post  $post){
+        $post->update([
+
+            'title' => $request->title,
+            'description'=>$request->description,
+            'user_id'=>$request->user_id
+            
+        ]);
+        
+             return redirect('/posts');      
     }
 
-    public function destroy(Post $post){
-        $post->delete();
+   public function destroy( $post){
+        $deletepost=Post::find($post);
+        $deletepost->delete();
+        session()->flash('message','Deleted successfully');
         return redirect('/posts');   
 
     }

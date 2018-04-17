@@ -3,24 +3,7 @@
 @extends('layout.master')
 
 @section('content')
-<!--Nav bar-->
- <!-- A grey horizontal navbar that becomes vertical on small screens -->
- <nav class="navbar navbar-expand-sm bg-light">
 
-<!-- Links -->
-<ul class="navbar-nav">
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link 1</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link 2</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link 3</a>
-  </li>
-</ul>
-
-</nav> 
 <!--create  new post-->
 <a href="/posts/create" class="btn btn-danger">Add </a>
 
@@ -43,7 +26,7 @@
       
       <td>
       <a href="/posts/{{$post->id}}" class="btn btn-info">View </a>
-      <a href="/posts/{post}/edit" class="btn btn-primary">Edit </a>
+      <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit </a>
       <form action="posts/{{$post->id}}" method="post">
       
       {{csrf_field()}}

@@ -12,13 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
- Route::get('posts','PostController@index');
+ Route::get('posts','PostController@index')
+ ->name('index')
+ ->middleware('auth');
 
- Route::get('posts/create','PostController@create');
- Route::post('posts','PostController@store');
- Route::get('posts/{post}','PostController@show');
- Route::get ('posts/{post}/edit','PostController@edit');
- Route::put('posts/{post}','PostController@update');
- Route::delete('posts/{post}','PostController@destroy');
+ Route::get('posts/create','PostController@create')
+ ->name('index')
+ ->middleware('auth');
+ Route::post('posts','PostController@store')
+ ->name('index')
+ ->middleware('auth');
+ Route::get('posts/{post}','PostController@show')
+ ->name('index')
+ ->middleware('auth');
+ Route::get ('posts/{post}/edit','PostController@edit')
+ ->name('index')
+ ->middleware('auth');
+ Route::put('posts/{post}','PostController@update')
+ ->name('index')
+ ->middleware('auth');
+ Route::delete('posts/{post}','PostController@destroy')
+ ->name('index')
+ ->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

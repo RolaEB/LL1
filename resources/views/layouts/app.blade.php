@@ -53,7 +53,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ url('logout') }}"
+                                        <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -65,7 +65,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('posts') }}">All Posts</a></li>
                         @endguest
                     </ul>
                 </div>

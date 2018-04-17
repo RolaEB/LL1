@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class PostController extends Controller
@@ -43,7 +44,8 @@ class PostController extends Controller
     public function edit ($post){
         $users = User::all();
         return view('edit',[
-            'users' => $users
+            'post'=>$post,
+             'users' => $users
         ]);
     }
 
@@ -59,7 +61,7 @@ class PostController extends Controller
              return redirect('/posts');      
     }
 
-   public function destroy( $post){
+    public function destroy( $post){
         $deletepost=Post::find($post);
         $deletepost->delete();
         

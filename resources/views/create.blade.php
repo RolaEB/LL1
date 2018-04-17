@@ -1,7 +1,6 @@
-@extends('layout.master')
+@extends('layouts.app')
 
 @section('content')
-
 <h1>Create Post</h1>
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -12,7 +11,6 @@
         </ul>
     </div>
 @endif
-
 <form method="post" action="/posts">
 {{csrf_field()}}
 Title :- <input type="text" name="title">

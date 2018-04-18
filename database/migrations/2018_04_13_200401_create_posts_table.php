@@ -20,7 +20,9 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+          
         });
+        
     }
 
     /**

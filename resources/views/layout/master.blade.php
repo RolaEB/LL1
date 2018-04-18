@@ -65,7 +65,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('posts') }}">All Posts</a></li>
+                            <li><a href="{{ url('posts') }}">All Posts</a></li>
                         @endguest
                     </ul>
                 </div>
